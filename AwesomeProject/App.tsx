@@ -1,32 +1,21 @@
-import React from "react";
-import { Image, ScrollView, Text, TextInput, View } from "react-native";
+import React, { useState } from 'react'
+import { Text, TextInput, View } from 'react-native';
 
-const App = () => {
+const MyApp = () => {
+  const [text, setText] = useState('');
   return (
-    <ScrollView>
-      <Text>Some text</Text>
-      <View>
-        <Text>Some more text</Text>
-        <Image
-          source={{
-            uri: "https://reactnative.dev/docs/assets/p_cat2.png"
-          }}
-          style={{
-            width: 200, height: 200
-          }}
-        />
-      </View>
+    <View style={{ padding: 10 , height:100, alignItems:"center", justifyContent:"center", backgroundColor:"red"}}>
       <TextInput
-        style={{
-          height: 40,
-          borderColor: 'gray',
-          borderWidth: 1
-        }}
-        defaultValue="You can type in me"
+        style={{ height: 40 }}
+        placeholder='Type hear to translate'
+        onChangeText={text => setText(text)}
+        defaultValue={text}
       />
-    </ScrollView>
-
+      <Text style={{ padding: 10, fontSize: 42 }}>
+        {text.split(' ').map((word) => word && '🍕').join(' ')}
+      </Text>
+    </View>
   );
 }
 
-export default App;
+export default MyApp;
